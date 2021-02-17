@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/comicsFragment"
-        android:name="com.example.marvelcomics.ui.ComicsFragment"
+        android:name="com.example.marvelcomics.ui.comics.ComicsFragment"
         android:label="fragment_comics"
         tools:layout="@layout/fragment_comics" />
 </navigation>
