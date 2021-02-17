@@ -15,6 +15,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ComicsFragment : Fragment() {
 
+    val adapterComics by lazy { ComicsAdapter() }
+
     val comicsViewModel: ComicsViewModel by viewModels()
 
     lateinit var _bindingComics: FragmentComicsBinding
@@ -27,16 +29,22 @@ class ComicsFragment : Fragment() {
 
         _bindingComics = FragmentComicsBinding.inflate(inflater, container, false)
 
+        setupRecyclerView()
+
         lifecycleScope.launch {
             comicsViewModel.getComics(15)
-            comicsViewModel.comics.observe(viewLifecycleOwner, {
-                Log.d("Comics", it.body()!!.data.results[14].title)
+            comicsViewModel.comic.observe(viewLifecycleOwner, {  comics ->
+                val comics = comics.body()!!.data.comics
+                adapterComics.setListComics(comics)
             })
         }
 
-
         return bindingComics.root
 
+    }
+
+    private fun setupRecyclerView() {
+        bindingComics.recyclerViewComics.adapter = adapterComics
     }
 
 }

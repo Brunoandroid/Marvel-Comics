@@ -3,7 +3,7 @@ package com.example.marvelcomics.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class Comic(
         @SerializedName("description")
         val description: String,
         @SerializedName("id")
