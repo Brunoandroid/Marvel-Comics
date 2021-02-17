@@ -14,4 +14,6 @@ data class Comic(
         val thumbnail: Thumbnail,
         @SerializedName("title")
         val title: String
-)
+) {
+        val extension: String get() = "/portrait_medium.jpg"
+}

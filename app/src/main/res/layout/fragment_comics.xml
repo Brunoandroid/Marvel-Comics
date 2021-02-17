@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.comics.ComicsFragment">
 
-   <androidx.recyclerview.widget.RecyclerView
+   <com.todkars.shimmer.ShimmerRecyclerView
        android:id="@+id/recyclerViewComics"
        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
        android:layout_width="match_parent"

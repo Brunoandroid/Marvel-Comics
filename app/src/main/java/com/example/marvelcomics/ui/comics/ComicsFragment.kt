@@ -2,12 +2,11 @@ package com.example.marvelcomics.ui.comics
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.marvelcomics.R
 import com.example.marvelcomics.databinding.FragmentComicsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -39,6 +38,8 @@ class ComicsFragment : Fragment() {
             })
         }
 
+        setHasOptionsMenu(true)
+
         return bindingComics.root
 
     }
@@ -47,4 +48,9 @@ class ComicsFragment : Fragment() {
         bindingComics.recyclerViewComics.adapter = adapterComics
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 }
