@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/custom_toolbar_main"
@@ -19,7 +19,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/menu">
 
-
     </androidx.appcompat.widget.Toolbar>
+
+    <fragment
+        android:id="@+id/fragmentComics"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0sp"
+        android:layout_height="0sp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_toolbar_main"
+        app:navGraph="@navigation/my_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

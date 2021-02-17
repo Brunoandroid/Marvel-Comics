@@ -4,5 +4,9 @@
     <!--Toolbar -->
     <string name="marvel_comics">Marvel Comics</string>
     <string name="info_menu">Informação</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome_do_quadrinho">Nome do Quadrinho</string>
+    <string name="detalhes">Detalhes</string>
 
 </resources>
