@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Marvel Comics</string>
+
+    <!--Toolbar -->
+    <string name="marvel_comics">Marvel Comics</string>
+    <string name="info_menu">Informação</string>
+
+</resources>
