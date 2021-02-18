@@ -3,17 +3,26 @@ package com.example.marvelcomics.ui.description
 import android.util.Log
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.data.model.Price
+import com.example.marvelcomics.repository.Repository
+import kotlinx.coroutines.launch
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class DescriptionViewModel : ViewModel() {
+class DescriptionViewModel @ViewModelInject constructor(
+    private var repository: Repository
+) : ViewModel() {
 
     private var number = 1
+
+    private var priceOriginal = 0.0
+    private var pricePlotsOriginal = 0.0
 
     private val _plots = MutableLiveData<String>()
     val plots: LiveData<String> get() = _plots
@@ -29,32 +38,65 @@ class DescriptionViewModel : ViewModel() {
     }
 
 
-        fun calculateInitPrice(listPrice: List<Price>) {
-            val df = DecimalFormat("#.##")
-            df.roundingMode = RoundingMode.CEILING
+    fun calculateInitPrice(listPrice: List<Price>) {
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
 
-            val dolarToReal = 5.41
-            val priceOriginal = ((listPrice[0].price) * dolarToReal)
-            val pricePlotsOriginal = priceOriginal / 3
+        val dolarToReal = 5.41
+        priceOriginal = ((listPrice[0].price) * dolarToReal)
+        pricePlotsOriginal = priceOriginal / 3
 
-            val price = df.format(priceOriginal)
-            val pricePlots = df.format(pricePlotsOriginal)
+        val pricePlotsComic = df.format(pricePlotsOriginal)
+        val priceComic = df.format(priceOriginal)
 
-            _plots.value = "3x de R$ $pricePlots"
-            _price.value = "R$ $price"
+        _plots.value = "3x de R$ $pricePlotsComic"
+        _price.value = "R$ $priceComic"
 
 
-        }
-
+    }
 
     fun countLow() {
-        _count.value = (--number).toString()
-        Log.d("CountLow", number.toString())
+        --number
+        calculateUpdatePrice()
     }
 
     fun countHigh() {
-        _count.value = (++number).toString()
-        Log.d("CountHigh", number.toString())
+        ++number
+        calculateUpdatePrice()
     }
 
+    fun calculateUpdatePrice() {
+        if (this.number > 0) {
+            val df = DecimalFormat("#.##")
+            df.roundingMode = RoundingMode.CEILING
+
+            val updatePriceOriginal = priceOriginal * number
+            val updatePricePlots = updatePriceOriginal / 3
+
+            val priceComic = df.format(updatePriceOriginal)
+            val pricePlots = df.format(updatePricePlots)
+
+
+            _price.value = "R$ $priceComic"
+            _plots.value = "3x de $pricePlots"
+
+            _count.value = (number).toString()
+        } else if (number <= 0) {
+            number++
+        }
+    }
+
+    fun addCart(comic: Comic, price: String, plots: String){
+        viewModelScope.launch {
+            repository.cartComicRepository.addCart(comic, price, plots)
+        }
+    }
+
+    suspend fun checkComic(comic: Comic) = repository.cartComicRepository.checkComic(comic)
+
+    fun updateFromComic(comic: Comic, price: String, plots: String) {
+        viewModelScope.launch {
+            repository.cartComicRepository.updateFromComic(comic, price, plots)
+        }
+    }
 }

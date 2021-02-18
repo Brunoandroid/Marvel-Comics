@@ -55,7 +55,7 @@ class ComicsFragment : Fragment() {
 
         }else {
             lifecycleScope.launch {
-                comicsViewModel.getComics(20)
+                comicsViewModel.getComics(25)
                 comicsViewModel.comic.observe(viewLifecycleOwner, { comics ->
                     val comics = comics.body()!!.data.comics
                     adapterComics.setListComics(comics)
