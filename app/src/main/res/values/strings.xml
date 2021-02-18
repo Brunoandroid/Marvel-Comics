@@ -15,5 +15,7 @@
 
     <!-- Fragment Comics -->
     <string name="no_connection">Verifique a conexão, sem internet</string>
+    <string name="sinopse">Sinopse</string>
+    <string name="price">Price</string>
 
 </resources>
