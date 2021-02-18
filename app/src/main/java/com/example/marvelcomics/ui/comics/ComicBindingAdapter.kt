@@ -31,7 +31,8 @@ class ComicBindingAdapter {
             val df = DecimalFormat("#.##")
             df.roundingMode = RoundingMode.CEILING
 
-            val priceOriginal = ((listPrice[0].price) * 5.41)
+            val dolarConvert = 5.41
+            val priceOriginal = ((listPrice[0].price) * dolarConvert)
             val price = df.format(priceOriginal)
 
             textView.text = "R$ $price"

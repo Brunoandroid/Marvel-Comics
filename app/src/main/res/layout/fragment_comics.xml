@@ -12,6 +12,34 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        tools:listitem="@layout/row_item_comics"
+       app:shimmer_recycler_layout="@layout/shimmer_comics"
+       app:shimmer_recycler_item_count="4"
        />
+
+   <ImageView
+       android:id="@+id/imageNoConnection"
+       android:layout_width="50sp"
+       android:layout_height="50sp"
+       android:alpha="0.5"
+       android:src="@drawable/ic_wifi_off"
+       android:visibility="invisible"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/recyclerViewComics"
+       tools:visibility="invisible" />
+
+   <TextView
+       android:id="@+id/textNoConnection"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:alpha="0.5"
+       android:visibility="invisible"
+       app:layout_constraintEnd_toEndOf="@+id/imageNoConnection"
+       app:layout_constraintStart_toStartOf="@+id/imageNoConnection"
+       app:layout_constraintTop_toBottomOf="@+id/imageNoConnection"
+       tools:text="Verifique a conexão, sem internet"
+       android:text="@string/no_connection"
+       tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

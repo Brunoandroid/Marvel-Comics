@@ -13,4 +13,7 @@
     <string name="nome_do_quadrinho">Nome do Quadrinho</string>
     <string name="detalhes">Detalhes</string>
 
+    <!-- Fragment Comics -->
+    <string name="no_connection">Verifique a conexão, sem internet</string>
+
 </resources>
