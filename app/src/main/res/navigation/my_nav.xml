@@ -9,5 +9,18 @@
         android:id="@+id/comicsFragment"
         android:name="com.example.marvelcomics.ui.comics.ComicsFragment"
         android:label="fragment_comics"
-        tools:layout="@layout/fragment_comics" />
+        tools:layout="@layout/fragment_comics" >
+        <action
+            android:id="@+id/action_comicsFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.example.marvelcomics.ui.description.DescriptionFragment"
+        android:label="fragment_description"
+        tools:layout="@layout/fragment_description" >
+        <argument
+            android:name="comic"
+            app:argType="com.example.marvelcomics.data.model.Comic" />
+    </fragment>
 </navigation>

@@ -3,6 +3,7 @@ package com.example.marvelcomics.ui.comics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.databinding.RowItemComicsBinding
@@ -27,10 +28,10 @@ class ComicsAdapter : RecyclerView.Adapter<ComicsAdapter.ComicsViewHolder>() {
         fun bind(comic: Comic) {
             binding.comic = comic
             binding.cardRowItem.setOnClickListener {
-                Log.d("Clique", comic.title)
+                val action = ComicsFragmentDirections.actionComicsFragmentToDescriptionFragment(comic)
+                binding.cardRowItem.findNavController().navigate(action)
             }
         }
-
     }
 
     override fun getItemCount(): Int = list.size

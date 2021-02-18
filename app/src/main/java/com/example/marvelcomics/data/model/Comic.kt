@@ -1,8 +1,11 @@
 package com.example.marvelcomics.data.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Comic(
         @SerializedName("description")
         val description: String,
@@ -14,6 +17,6 @@ data class Comic(
         val thumbnail: Thumbnail,
         @SerializedName("title")
         val title: String
-) {
+): Parcelable {
         val extension: String get() = "/portrait_medium.jpg"
 }

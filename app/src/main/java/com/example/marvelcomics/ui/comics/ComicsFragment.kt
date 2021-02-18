@@ -29,7 +29,7 @@ class ComicsFragment : Fragment() {
 
         _bindingComics = FragmentComicsBinding.inflate(inflater, container, false)
 
-        bindingComics.recyclerViewComics.showShimmer()
+        bindingComics.progressBar.progress
 
         setupRecyclerView()
 
@@ -43,13 +43,12 @@ class ComicsFragment : Fragment() {
 
     private fun setupRecyclerView() {
         bindingComics.recyclerViewComics.adapter = adapterComics
-        bindingComics.recyclerViewComics.showShimmer()
     }
 
     private fun requestGetComics() {
         if(!comicsViewModel.hasInternetConnection()){
             bindingComics.apply {
-                recyclerViewComics.hideShimmer()
+                bindingComics.progressBar.visibility = View.INVISIBLE
                 imageNoConnection.visibility = View.VISIBLE
                 textNoConnection.visibility = View.VISIBLE
             }
@@ -60,7 +59,7 @@ class ComicsFragment : Fragment() {
                 comicsViewModel.comic.observe(viewLifecycleOwner, { comics ->
                     val comics = comics.body()!!.data.comics
                     adapterComics.setListComics(comics)
-                    bindingComics.recyclerViewComics.hideShimmer()
+                    bindingComics.progressBar.visibility = View.INVISIBLE
                 })
             }
         }

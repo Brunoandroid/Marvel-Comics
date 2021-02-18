@@ -6,14 +6,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.comics.ComicsFragment">
 
-   <com.todkars.shimmer.ShimmerRecyclerView
+   <ProgressBar
+       android:id="@+id/progressBar"
+       style="?android:attr/progressBarStyle"
+       android:visibility="visible"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:indeterminate="true"
+       android:indeterminateDrawable="@drawable/progress_bg"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="@+id/recyclerViewComics"
+       app:layout_constraintStart_toStartOf="@+id/recyclerViewComics"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recyclerViewComics"
        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        tools:listitem="@layout/row_item_comics"
-       app:shimmer_recycler_layout="@layout/shimmer_comics"
-       app:shimmer_recycler_item_count="4"
        />
 
    <ImageView

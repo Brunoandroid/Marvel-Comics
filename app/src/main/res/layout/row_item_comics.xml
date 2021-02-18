@@ -52,35 +52,47 @@
                     android:text="@{comic.title}"
                     android:gravity="center"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="@string/nome_do_quadrinho" />
 
                 <TextView
+                    android:id="@+id/textView2"
+                    listPrice="@{comic.prices}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/detalhes_comics"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView"
                     app:layout_constraintHorizontal_bias="0.468"
                     app:layout_constraintStart_toStartOf="@+id/textView"
                     app:layout_constraintTop_toBottomOf="@+id/textView"
-                    tools:text="R$25,00"
-                    listPrice="@{comic.prices}"/>
+                    tools:text="R$25,00" />
 
-                <Button
-                    android:id="@+id/detalhes_comics"
+                <View
+                    android:id="@+id/view4"
                     android:layout_width="0sp"
-                    android:layout_height="30sp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/detalhes"
-                    android:textColor="@color/red"
-                    android:textStyle="bold"
+                    android:layout_height="25sp"
+                    android:layout_marginStart="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintHorizontal_bias="0.461"
                     app:layout_constraintStart_toEndOf="@+id/imageView" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detalhes"
+                    android:textColor="@color/lightGray"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/view4"
+                    app:layout_constraintStart_toStartOf="@+id/view4"
+                    app:layout_constraintTop_toTopOf="@+id/view4" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

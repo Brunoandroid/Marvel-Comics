@@ -9,9 +9,11 @@
         android:icon="@drawable/ic_shopping"/>
 
     <item
-        android:id="@+id/idIinfo"
+        android:id="@+id/idInfo"
         android:title="@string/info_menu"
         app:showAsAction="ifRoom|collapseActionView"
-        android:icon="@drawable/ic_info" />
+        android:icon="@drawable/ic_info"/>
+
+
 
 </menu>
