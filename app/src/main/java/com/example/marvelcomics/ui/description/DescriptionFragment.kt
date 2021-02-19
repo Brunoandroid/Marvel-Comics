@@ -2,6 +2,7 @@ package com.example.marvelcomics.ui.description
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -53,22 +54,32 @@ class DescriptionFragment : Fragment() {
 
     }
 
-    fun addCart(){
+    fun addCart() {
         val price = (descriptionViewModel.price.value).toString()
         val plots = (descriptionViewModel.plots.value).toString()
 
         lifecycleScope.launch {
             val contComic = descriptionViewModel.checkComic(args.comic)
-            if(contComic>0){
+            if (contComic > 0) {
                 descriptionViewModel.updateFromComic(args.comic, price, plots)
+                Toast.makeText(requireContext(), "Item atualizado com sucesso", Toast.LENGTH_SHORT)
+                    .show()
+                backComics()
             } else if (contComic == 0) {
                 descriptionViewModel.addCart(args.comic, price, plots)
+                Toast.makeText(requireContext(), "Item adicionado com sucesso", Toast.LENGTH_SHORT)
+                    .show()
+                backComics()
             }
         }
     }
 
+    private fun backComics() {
+        findNavController().navigate(R.id.action_descriptionFragment_to_comicsFragment)
+    }
+
     private fun purchase() {
-          findNavController().navigate(R.id.action_descriptionFragment_to_cartFragment)
+        findNavController().navigate(R.id.action_descriptionFragment_to_cartFragment)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

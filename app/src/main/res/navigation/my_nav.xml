@@ -25,6 +25,11 @@
         <action
             android:id="@+id/action_descriptionFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_descriptionFragment_to_comicsFragment"
+            app:destination="@id/comicsFragment"
+            app:popUpTo="@id/comicsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"

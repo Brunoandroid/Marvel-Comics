@@ -23,4 +23,10 @@
     <string name="Menos">-</string>
     <string name="one">1</string>
 
+    <!-- Cart Fragment -->
+    <string name="inserir">Inserir</string>
+    <string name="informe_cupom">Informe o Cupom</string>
+    <string name="lista_de_compras">Lista de Compras</string>
+    <string name="valor_da_compra">Valor da Compra</string>
+
 </resources>
