@@ -132,7 +132,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageBannerComic" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonPurchase"
                 android:layout_width="195dp"
                 android:layout_height="31dp"
                 android:background="@color/colorPrimary"

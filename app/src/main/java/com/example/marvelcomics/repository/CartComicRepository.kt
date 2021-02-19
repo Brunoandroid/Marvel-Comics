@@ -8,7 +8,7 @@ import javax.inject.Inject
 class CartComicRepository @Inject constructor(
     private var cartDao: CartDao
 ) {
-    suspend fun addCart(comic: Comic, price: String, plots: String) = cartDao.addCart(CartComics(comic, price, plots))
+    suspend fun addCart(comic: Comic, price: String, plots: String, amount: Int) = cartDao.addCart(CartComics(comic, price, plots, amount))
 
     fun getCart() = cartDao.getCart()
 
@@ -18,8 +18,8 @@ class CartComicRepository @Inject constructor(
         cartDao.removeFromComic(comic)
     }
 
-    suspend fun updateFromComic(comic: Comic, price: String, plots: String){
-        cartDao.updateFromComic(comic, price, plots)
+    suspend fun updateFromComic(comic: Comic, price: String, plots: String, amount: Int){
+        cartDao.updateFromComic(comic, price, plots, amount)
     }
 
 }

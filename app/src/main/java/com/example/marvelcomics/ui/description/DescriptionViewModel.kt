@@ -88,7 +88,7 @@ class DescriptionViewModel @ViewModelInject constructor(
 
     fun addCart(comic: Comic, price: String, plots: String){
         viewModelScope.launch {
-            repository.cartComicRepository.addCart(comic, price, plots)
+            repository.cartComicRepository.addCart(comic, price, plots, number)
         }
     }
 
@@ -96,7 +96,7 @@ class DescriptionViewModel @ViewModelInject constructor(
 
     fun updateFromComic(comic: Comic, price: String, plots: String) {
         viewModelScope.launch {
-            repository.cartComicRepository.updateFromComic(comic, price, plots)
+            repository.cartComicRepository.updateFromComic(comic, price, plots, number)
         }
     }
 }

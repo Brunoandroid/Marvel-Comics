@@ -12,8 +12,8 @@ interface CartDao {
     @Insert
     suspend fun addCart(cartComics: CartComics)
 
-    @Query("SELECT comic FROM cart_comics")
-    fun getCart(): LiveData<List<Comic>>
+    @Query("SELECT * FROM cart_comics")
+    fun getCart(): LiveData<List<CartComics>>
 
     @Query("SELECT count(*) FROM cart_comics WHERE cart_comics.comic = :comic")
     suspend fun checkComic(comic: Comic): Int
@@ -21,7 +21,7 @@ interface CartDao {
     @Query("DELETE FROM cart_comics WHERE cart_comics.comic = :comic")
     suspend fun removeFromComic(comic: Comic) : Int
 
-    @Query("UPDATE cart_comics set comic = :comic, price = :price, plots = :plots WHERE cart_comics.comic = :comic")
-    suspend fun updateFromComic(comic: Comic, price: String, plots: String) : Int
+    @Query("UPDATE cart_comics set comic = :comic, price = :price, plots = :plots, amount = :amount WHERE cart_comics.comic = :comic")
+    suspend fun updateFromComic(comic: Comic, price: String, plots: String, amount: Int) : Int
 
 }

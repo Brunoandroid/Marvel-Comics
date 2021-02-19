@@ -29,7 +29,7 @@ object AppModule {
     ) = Room.databaseBuilder(
         app,
         AppDBCart::class.java,
-        "cart_comic_shopping"
+        "cart_comic"
     ).build()
 
 
