@@ -25,6 +25,13 @@ Este projeto apresenta uma lista de revista em quadrinhos da Marvel. O aplicativ
 - Glide
 - View Binding
 
+## Funcionalidades
+- Listagem
+- Detalhe das Revistas
+- Salvar Revistas no Carrinho
+- Verificação de Internet
+- Tela de Checkout
+
 # Autor
 
 Bruno Freitas Araujo
