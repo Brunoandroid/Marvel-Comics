@@ -15,14 +15,13 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class ComicsViewModel @ViewModelInject constructor(
-       private val repository: Repository,
-       application: Application
-): AndroidViewModel(application) {
+    private val repository: Repository,
+    application: Application
+) : AndroidViewModel(application) {
 
-   val comic: MutableLiveData<Response<ComicResponse>> = MutableLiveData()
+    val comic: MutableLiveData<Response<ComicResponse>> = MutableLiveData()
 
-
-    suspend fun getComics(limit: Int){
+    suspend fun getComics(limit: Int) {
         viewModelScope.launch {
             comic.value = repository.comicsRepository.getComics(limit)
         }
@@ -32,7 +31,7 @@ class ComicsViewModel @ViewModelInject constructor(
     // Verifica se tem internet
     fun hasInternetConnection(): Boolean {
         val connectivityManager = getApplication<Application>().getSystemService(
-                Context.CONNECTIVITY_SERVICE
+            Context.CONNECTIVITY_SERVICE
         ) as ConnectivityManager
         val activeNetwork = connectivityManager.activeNetwork ?: return false
         val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false

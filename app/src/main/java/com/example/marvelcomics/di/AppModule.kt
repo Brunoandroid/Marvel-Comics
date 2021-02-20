@@ -42,10 +42,10 @@ object AppModule {
     @Provides
     fun providerHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-                .addInterceptor(MyInterceptor())
-                .readTimeout(15, TimeUnit.SECONDS)
-                .connectTimeout(15, TimeUnit.SECONDS)
-                .build()
+            .addInterceptor(MyInterceptor())
+            .readTimeout(15, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .build()
     }
 
     @Singleton
@@ -57,14 +57,14 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofitInstance(
-            okHttpClient: OkHttpClient,
-            gsonConverterFactory: GsonConverterFactory
+        okHttpClient: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(okHttpClient)
-                .addConverterFactory(gsonConverterFactory)
-                .build()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(gsonConverterFactory)
+            .build()
     }
 
     @Singleton

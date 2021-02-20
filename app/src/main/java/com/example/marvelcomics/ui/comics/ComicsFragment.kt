@@ -3,10 +3,12 @@ package com.example.marvelcomics.ui.comics
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.marvelcomics.R
 import com.example.marvelcomics.databinding.FragmentComicsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,9 +24,11 @@ class ComicsFragment : Fragment() {
     lateinit var _bindingComics: FragmentComicsBinding
     val bindingComics: FragmentComicsBinding get() = _bindingComics
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?):
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ):
             View? {
 
         _bindingComics = FragmentComicsBinding.inflate(inflater, container, false)
@@ -46,14 +50,14 @@ class ComicsFragment : Fragment() {
     }
 
     private fun requestGetComics() {
-        if(!comicsViewModel.hasInternetConnection()){
+        if (!comicsViewModel.hasInternetConnection()) {
             bindingComics.apply {
                 bindingComics.progressBar.visibility = View.INVISIBLE
                 imageNoConnection.visibility = View.VISIBLE
                 textNoConnection.visibility = View.VISIBLE
             }
 
-        }else {
+        } else {
             lifecycleScope.launch {
                 comicsViewModel.getComics(25)
                 comicsViewModel.comic.observe(viewLifecycleOwner, { comics ->
@@ -69,5 +73,15 @@ class ComicsFragment : Fragment() {
         inflater.inflate(R.menu.menu, menu)
 
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.idShopping -> {
+                findNavController().navigate(R.id.action_comicsFragment_to_cartFragment)
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -17,6 +17,6 @@ data class Comic(
         val thumbnail: Thumbnail,
         @SerializedName("title")
         val title: String
-): Parcelable {
-        val extension: String get() = "/portrait_medium.jpg"
+) : Parcelable {
+    val extension: String get() = "/portrait_medium.jpg"
 }

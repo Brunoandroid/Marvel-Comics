@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="comic"
             type="com.example.marvelcomics.data.model.Comic" />
@@ -13,7 +12,6 @@
             name="viewModel"
             type="com.example.marvelcomics.ui.description.DescriptionViewModel" />
     </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -56,7 +54,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="center"
-                android:text="@{viewModel.price.toString()}"
+                priceComicsFull="@{viewModel.price.toString()}"
                 android:textColor="@color/darker"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
@@ -132,11 +130,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageBannerComic" />
 
             <Button
-                android:id="@+id/buttonPurchase"
+                android:id="@+id/buttonNavigate"
                 android:layout_width="195dp"
                 android:layout_height="31dp"
                 android:background="@color/colorPrimary"
-                android:text="Comprar"
+                android:text="Ir ao Carrinho"
                 android:textColor="@color/red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/buttonCart" />

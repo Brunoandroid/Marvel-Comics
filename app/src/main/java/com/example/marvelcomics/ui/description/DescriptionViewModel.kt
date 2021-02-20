@@ -1,8 +1,5 @@
 package com.example.marvelcomics.ui.description
 
-import android.util.Log
-import android.widget.TextView
-import androidx.databinding.BindingAdapter
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,6 +17,7 @@ class DescriptionViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     private var number = 1
+    private var fullPrice = 0.0
 
     private var priceOriginal = 0.0
     private var pricePlotsOriginal = 0.0
@@ -44,13 +42,14 @@ class DescriptionViewModel @ViewModelInject constructor(
 
         val dolarToReal = 5.41
         priceOriginal = ((listPrice[0].price) * dolarToReal)
+        fullPrice = priceOriginal
         pricePlotsOriginal = priceOriginal / 3
 
         val pricePlotsComic = df.format(pricePlotsOriginal)
         val priceComic = df.format(priceOriginal)
 
         _plots.value = "3x de R$ $pricePlotsComic"
-        _price.value = "R$ $priceComic"
+        _price.value = "$priceComic"
 
 
     }
@@ -71,13 +70,14 @@ class DescriptionViewModel @ViewModelInject constructor(
             df.roundingMode = RoundingMode.CEILING
 
             val updatePriceOriginal = priceOriginal * number
+            fullPrice = updatePriceOriginal
             val updatePricePlots = updatePriceOriginal / 3
 
             val priceComic = df.format(updatePriceOriginal)
             val pricePlots = df.format(updatePricePlots)
 
 
-            _price.value = "R$ $priceComic"
+            _price.value = "$priceComic"
             _plots.value = "3x de $pricePlots"
 
             _count.value = (number).toString()
@@ -86,17 +86,29 @@ class DescriptionViewModel @ViewModelInject constructor(
         }
     }
 
-    fun addCart(comic: Comic, price: String, plots: String){
+    fun addCart(comic: Comic) {
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+        val priceOriginalCompress = df.format(priceOriginal)
         viewModelScope.launch {
-            repository.cartComicRepository.addCart(comic, price, plots, number)
+            repository.cartComicRepository.addCart(
+                comic, fullPrice,
+                priceOriginalCompress.toString(), "Quantidade " + number.toString()
+            )
         }
     }
 
     suspend fun checkComic(comic: Comic) = repository.cartComicRepository.checkComic(comic)
 
-    fun updateFromComic(comic: Comic, price: String, plots: String) {
+    fun updateFromComic(comic: Comic) {
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+        val priceOriginalCompress = df.format(priceOriginal)
         viewModelScope.launch {
-            repository.cartComicRepository.updateFromComic(comic, price, plots, number)
+            repository.cartComicRepository.updateFromComic(
+                comic, fullPrice,
+                priceOriginalCompress, "Quantidade " + number.toString()
+            )
         }
     }
 }

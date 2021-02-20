@@ -44,8 +44,8 @@ class DescriptionFragment : Fragment() {
             addCart()
         }
 
-        bindingDescription.buttonPurchase.setOnClickListener {
-            purchase()
+        bindingDescription.buttonNavigate.setOnClickListener {
+            navigateCart()
         }
 
         setHasOptionsMenu(true)
@@ -55,18 +55,15 @@ class DescriptionFragment : Fragment() {
     }
 
     fun addCart() {
-        val price = (descriptionViewModel.price.value).toString()
-        val plots = (descriptionViewModel.plots.value).toString()
-
         lifecycleScope.launch {
             val contComic = descriptionViewModel.checkComic(args.comic)
             if (contComic > 0) {
-                descriptionViewModel.updateFromComic(args.comic, price, plots)
+                descriptionViewModel.updateFromComic(args.comic)
                 Toast.makeText(requireContext(), "Item atualizado com sucesso", Toast.LENGTH_SHORT)
                     .show()
                 backComics()
             } else if (contComic == 0) {
-                descriptionViewModel.addCart(args.comic, price, plots)
+                descriptionViewModel.addCart(args.comic)
                 Toast.makeText(requireContext(), "Item adicionado com sucesso", Toast.LENGTH_SHORT)
                     .show()
                 backComics()
@@ -78,7 +75,7 @@ class DescriptionFragment : Fragment() {
         findNavController().navigate(R.id.action_descriptionFragment_to_comicsFragment)
     }
 
-    private fun purchase() {
+    private fun navigateCart() {
         findNavController().navigate(R.id.action_descriptionFragment_to_cartFragment)
     }
 

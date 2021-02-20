@@ -17,12 +17,12 @@ class ComicBindingAdapter {
 
         @BindingAdapter("loadImage")
         @JvmStatic
-        fun loadImage(imageView: ImageView, comic: Comic){
-            var imageUrl = comic.thumbnail.path+comic.extension
+        fun loadImage(imageView: ImageView, comic: Comic) {
+            var imageUrl = comic.thumbnail.path + comic.extension
             Glide.with(imageView)
-                    .load(imageUrl)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(imageView)
+                .load(imageUrl)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(imageView)
         }
 
         @BindingAdapter("listPrice")

@@ -6,8 +6,8 @@ import com.example.marvelcomics.repository.Repository
 
 class CartViewModel @ViewModelInject constructor(
     private val repository: Repository
-): ViewModel() {
+) : ViewModel() {
 
-   fun getCart() = repository.cartComicRepository.getCart()
+    fun getCart() = repository.cartComicRepository.getCart()
 
 }

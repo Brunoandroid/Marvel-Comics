@@ -19,9 +19,14 @@ interface CartDao {
     suspend fun checkComic(comic: Comic): Int
 
     @Query("DELETE FROM cart_comics WHERE cart_comics.comic = :comic")
-    suspend fun removeFromComic(comic: Comic) : Int
+    suspend fun removeFromComic(comic: Comic): Int
 
-    @Query("UPDATE cart_comics set comic = :comic, price = :price, plots = :plots, amount = :amount WHERE cart_comics.comic = :comic")
-    suspend fun updateFromComic(comic: Comic, price: String, plots: String, amount: Int) : Int
+    @Query("UPDATE cart_comics set comic = :comic, price = :price, priceUnity = :priceUnity, amount = :amount WHERE cart_comics.comic = :comic")
+    suspend fun updateFromComic(
+        comic: Comic,
+        price: Double,
+        priceUnity: String,
+        amount: String
+    ): Int
 
 }

@@ -6,14 +6,14 @@ import androidx.room.TypeConverters
 import com.example.marvelcomics.data.db.TypesConverts
 
 @Database(
-        entities = [CartComics::class],
-        version = 1,
-        exportSchema = false
-    )
+    entities = [CartComics::class],
+    version = 1,
+    exportSchema = false
+)
 
-    @TypeConverters(TypesConverts::class)
-    abstract class AppDBCart: RoomDatabase() {
+@TypeConverters(TypesConverts::class)
+abstract class AppDBCart : RoomDatabase() {
 
-        abstract fun getCartDao(): CartDao
+    abstract fun getCartDao(): CartDao
 
-    }
+}

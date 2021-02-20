@@ -14,7 +14,7 @@ class ComicsAdapter : RecyclerView.Adapter<ComicsAdapter.ComicsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicsViewHolder {
         val binding =
-                RowItemComicsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            RowItemComicsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ComicsViewHolder(binding)
     }
 
@@ -23,12 +23,13 @@ class ComicsAdapter : RecyclerView.Adapter<ComicsAdapter.ComicsViewHolder>() {
     }
 
     inner class ComicsViewHolder(private val binding: RowItemComicsBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(comic: Comic) {
             binding.comic = comic
             binding.cardRowItem.setOnClickListener {
-                val action = ComicsFragmentDirections.actionComicsFragmentToDescriptionFragment(comic)
+                val action =
+                    ComicsFragmentDirections.actionComicsFragmentToDescriptionFragment(comic)
                 binding.cardRowItem.findNavController().navigate(action)
             }
         }

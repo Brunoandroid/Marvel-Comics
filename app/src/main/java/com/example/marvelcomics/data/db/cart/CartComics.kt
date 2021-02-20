@@ -11,9 +11,9 @@ import java.io.Serializable
 @Parcelize
 data class CartComics(
     var comic: Comic,
-    var price: String,
-    var plots: String,
-    var amount: Int
+    var price: Double,
+    var priceUnity: String,
+    var amount: String
 ) : Serializable, Parcelable {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

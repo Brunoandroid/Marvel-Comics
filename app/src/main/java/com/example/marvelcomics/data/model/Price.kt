@@ -11,4 +11,4 @@ data class Price(
     val price: Double,
     @SerializedName("type")
     val type: String
-): Parcelable
+) : Parcelable

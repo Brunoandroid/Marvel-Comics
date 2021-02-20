@@ -1,7 +1,7 @@
 package com.example.marvelcomics.util
 
 class Constants {
-    companion object{
+    companion object {
 
         const val BASE_URL = "https://gateway.marvel.com/"
 

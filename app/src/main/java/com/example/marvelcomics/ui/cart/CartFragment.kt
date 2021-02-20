@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.observe
 import com.example.marvelcomics.R
 import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.databinding.FragmentCartBinding
@@ -15,6 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CartFragment : Fragment() {
+
+    val adapter by lazy { CartAdapter() }
 
     val cartViewModel: CartViewModel by viewModels()
 
@@ -28,8 +31,10 @@ class CartFragment : Fragment() {
 
         _bindingCart = FragmentCartBinding.inflate(inflater, container, false)
 
-        cartViewModel.getCart().observe(viewLifecycleOwner, {
-            Log.d("Cart", it.toString())
+        bindingCart.recyclerView.adapter = adapter
+
+        cartViewModel.getCart().observe(viewLifecycleOwner, { cartComic ->
+            adapter.setListCartComics(cartComic)
         })
 
         return bindingCart.root
