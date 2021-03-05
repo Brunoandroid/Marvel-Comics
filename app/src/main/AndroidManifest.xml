@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name=".ui.MarvelApplication"
+        android:name="com.example.marvelcomics.presentation.ui.MarvelApplication"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MarvelComics">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name="com.example.marvelcomics.presentation.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,16 +1,12 @@
-package com.example.marvelcomics.ui.cart
+package com.example.marvelcomics.presentation.ui.cart
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.observe
-import com.example.marvelcomics.R
-import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.databinding.FragmentCartBinding
 import dagger.hilt.android.AndroidEntryPoint
 

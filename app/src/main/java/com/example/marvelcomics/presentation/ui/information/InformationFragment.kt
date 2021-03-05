@@ -1,11 +1,10 @@
-package com.example.marvelcomics.ui.information
+package com.example.marvelcomics.presentation.ui.information
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.marvelcomics.R
 import com.example.marvelcomics.databinding.FragmentInformationBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +20,6 @@ class InformationFragment : Fragment() {
     ): View? {
 
         _bindingInformation = FragmentInformationBinding.inflate(inflater, container, false)
-
 
         return bindingInformation.root
 

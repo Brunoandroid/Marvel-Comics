@@ -1,15 +1,10 @@
-package com.example.marvelcomics.ui.cart
+package com.example.marvelcomics.presentation.ui.cart
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcomics.data.db.cart.CartComics
-import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.databinding.RowItemCartBinding
-import com.example.marvelcomics.databinding.RowItemComicsBinding
 
 class CartAdapter : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 

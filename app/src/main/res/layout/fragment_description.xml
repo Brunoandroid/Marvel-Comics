@@ -10,13 +10,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.marvelcomics.ui.description.DescriptionViewModel" />
+            type="com.example.marvelcomics.presentation.ui.description.DescriptionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.description.DescriptionFragment">
+        tools:context=".presentation.ui.description.DescriptionFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

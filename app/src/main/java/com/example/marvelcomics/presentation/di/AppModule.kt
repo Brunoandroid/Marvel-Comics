@@ -1,11 +1,11 @@
-package com.example.marvelcomics.di
+package com.example.marvelcomics.presentation.di
 
 import android.content.Context
 import androidx.room.Room
 import com.example.marvelcomics.data.db.cart.AppDBCart
 import com.example.marvelcomics.data.service.MyInterceptor
 import com.example.marvelcomics.data.service.RequestApi
-import com.example.marvelcomics.util.Constants.Companion.BASE_URL
+import com.example.marvelcomics.domain.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

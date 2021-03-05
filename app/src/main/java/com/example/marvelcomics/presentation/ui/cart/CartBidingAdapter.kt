@@ -1,8 +1,7 @@
-package com.example.marvelcomics.ui.cart
+package com.example.marvelcomics.presentation.ui.cart
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.example.marvelcomics.data.db.cart.CartComics
 
 class CartBidingAdapter {
 

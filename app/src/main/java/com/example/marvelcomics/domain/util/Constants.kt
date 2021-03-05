@@ -1,4 +1,4 @@
-package com.example.marvelcomics.util
+package com.example.marvelcomics.domain.util
 
 class Constants {
     companion object {

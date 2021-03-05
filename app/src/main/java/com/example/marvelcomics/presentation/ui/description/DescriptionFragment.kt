@@ -1,4 +1,4 @@
-package com.example.marvelcomics.ui.description
+package com.example.marvelcomics.presentation.ui.description
 
 import android.os.Bundle
 import android.view.*

@@ -29,4 +29,8 @@
     <string name="lista_de_compras">Lista de Compras</string>
     <string name="valor_da_compra">Valor da Compra</string>
 
+    <!-- ComicBindingAdapter -->
+    <string name="acronym_money">R$</string>
+    <string name="ee">sss</string>
+
 </resources>

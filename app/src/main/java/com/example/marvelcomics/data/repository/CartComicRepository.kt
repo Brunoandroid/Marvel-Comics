@@ -1,10 +1,12 @@
-package com.example.marvelcomics.repository
+package com.example.marvelcomics.data.repository
 
 import com.example.marvelcomics.data.db.cart.CartComics
 import com.example.marvelcomics.data.db.cart.CartDao
 import com.example.marvelcomics.data.model.Comic
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 
+@ActivityRetainedScoped
 class CartComicRepository @Inject constructor(
     private var cartDao: CartDao
 ) {

@@ -1,4 +1,4 @@
-package com.example.marvelcomics.ui.description
+package com.example.marvelcomics.presentation.ui.description
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -7,13 +7,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.data.model.Price
-import com.example.marvelcomics.repository.Repository
+import com.example.marvelcomics.data.repository.CartComicRepository
 import kotlinx.coroutines.launch
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
 class DescriptionViewModel @ViewModelInject constructor(
-    private var repository: Repository
+    private var cartComicRepository: CartComicRepository
 ) : ViewModel() {
 
     private var number = 1
@@ -91,21 +91,21 @@ class DescriptionViewModel @ViewModelInject constructor(
         df.roundingMode = RoundingMode.CEILING
         val priceOriginalCompress = df.format(priceOriginal)
         viewModelScope.launch {
-            repository.cartComicRepository.addCart(
+            cartComicRepository.addCart(
                 comic, fullPrice,
                 priceOriginalCompress.toString(), "Quantidade " + number.toString()
             )
         }
     }
 
-    suspend fun checkComic(comic: Comic) = repository.cartComicRepository.checkComic(comic)
+    suspend fun checkComic(comic: Comic) = cartComicRepository.checkComic(comic)
 
     fun updateFromComic(comic: Comic) {
         val df = DecimalFormat("#.##")
         df.roundingMode = RoundingMode.CEILING
         val priceOriginalCompress = df.format(priceOriginal)
         viewModelScope.launch {
-            repository.cartComicRepository.updateFromComic(
+            cartComicRepository.updateFromComic(
                 comic, fullPrice,
                 priceOriginalCompress, "Quantidade " + number.toString()
             )

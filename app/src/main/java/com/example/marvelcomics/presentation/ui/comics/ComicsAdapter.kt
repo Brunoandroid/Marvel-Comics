@@ -1,4 +1,4 @@
-package com.example.marvelcomics.ui.comics
+package com.example.marvelcomics.presentation.ui.comics
 
 import android.util.Log
 import android.view.LayoutInflater

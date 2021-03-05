@@ -1,10 +1,7 @@
-package com.example.marvelcomics.ui.comics
+package com.example.marvelcomics.presentation.ui.comics
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -29,7 +26,7 @@ class ComicsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ):
-            View? {
+            View {
 
         _bindingComics = FragmentComicsBinding.inflate(inflater, container, false)
 

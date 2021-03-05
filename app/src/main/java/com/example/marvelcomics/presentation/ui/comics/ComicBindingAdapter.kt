@@ -1,4 +1,4 @@
-package com.example.marvelcomics.ui.comics
+package com.example.marvelcomics.presentation.ui.comics
 
 import android.widget.ImageView
 import android.widget.TextView
@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.data.model.Price
-import com.example.marvelcomics.data.model.Thumbnail
 import java.math.RoundingMode
 import java.text.DecimalFormat
 

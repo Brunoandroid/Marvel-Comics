@@ -10,6 +10,6 @@ interface RequestApi {
     @GET("v1/public/comics")
     suspend fun getComics(
         @Query("limit") limit: Int
-    ): Response<ComicResponse>
+    ): Response<ComicResponse>?
 
 }

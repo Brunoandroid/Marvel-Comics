@@ -1,4 +1,4 @@
-package com.example.marvelcomics.ui.comics
+package com.example.marvelcomics.presentation.ui.comics
 
 import android.app.Application
 import android.content.Context
@@ -7,15 +7,14 @@ import android.net.NetworkCapabilities
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvelcomics.data.model.ComicResponse
-import com.example.marvelcomics.repository.Repository
+import com.example.marvelcomics.data.repository.ComicsRepository
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class ComicsViewModel @ViewModelInject constructor(
-    private val repository: Repository,
+    private val comicsRepository: ComicsRepository,
     application: Application
 ) : AndroidViewModel(application) {
 
@@ -23,10 +22,11 @@ class ComicsViewModel @ViewModelInject constructor(
 
     suspend fun getComics(limit: Int) {
         viewModelScope.launch {
-            comic.value = repository.comicsRepository.getComics(limit)
+            comic.value = comicsRepository.getComics(limit)
         }
 
     }
+
 
     // Verifica se tem internet
     fun hasInternetConnection(): Boolean {
