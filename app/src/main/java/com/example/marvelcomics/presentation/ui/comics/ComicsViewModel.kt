@@ -9,12 +9,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.marvelcomics.data.model.ComicResponse
-import com.example.marvelcomics.data.repository.ComicsRepository
+import com.example.marvelcomics.data.repository.ComicsRepositoryImpl
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class ComicsViewModel @ViewModelInject constructor(
-    private val comicsRepository: ComicsRepository,
+    private val comicsRepositoryImpl: ComicsRepositoryImpl,
     application: Application
 ) : AndroidViewModel(application) {
 
@@ -22,7 +22,7 @@ class ComicsViewModel @ViewModelInject constructor(
 
     suspend fun getComics(limit: Int) {
         viewModelScope.launch {
-            comic.value = comicsRepository.getComics(limit)
+            comic.value = comicsRepositoryImpl.getComics(limit)
         }
 
     }
