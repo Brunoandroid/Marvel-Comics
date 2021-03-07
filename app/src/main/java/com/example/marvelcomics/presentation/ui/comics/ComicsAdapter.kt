@@ -20,6 +20,7 @@ class ComicsAdapter : RecyclerView.Adapter<ComicsAdapter.ComicsViewHolder>() {
 
     override fun onBindViewHolder(holder: ComicsViewHolder, position: Int) {
         holder.bind(list[position])
+        Log.d("positionAdapter", position.toString())
     }
 
     inner class ComicsViewHolder(private val binding: RowItemComicsBinding) :

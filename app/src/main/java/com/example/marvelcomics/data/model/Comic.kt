@@ -20,3 +20,4 @@ data class Comic(
 ) : Parcelable {
     val extension: String get() = "/portrait_medium.jpg"
 }
+

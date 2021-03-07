@@ -10,12 +10,12 @@ class TypesConverts {
     var gson = Gson()
 
     @TypeConverter
-    fun comicToString(comic: Comic): String {
+    fun comicDomainToString(comic: Comic): String {
         return gson.toJson(comic)
     }
 
     @TypeConverter
-    fun stringToComic(data: String): Comic {
+    fun stringToComicDomain(data: String): Comic {
         val listType = object : TypeToken<Comic>() {}.type
         return gson.fromJson(data, listType)
     }

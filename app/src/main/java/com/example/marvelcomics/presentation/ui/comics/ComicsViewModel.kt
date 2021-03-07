@@ -8,23 +8,22 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.marvelcomics.data.model.ComicResponse
-import com.example.marvelcomics.data.repository.ComicsRepositoryImpl
+import com.example.marvelcomics.data.model.Comic
+import com.example.marvelcomics.domain.usecases.GetComicsUseCase
+
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class ComicsViewModel @ViewModelInject constructor(
-    private val comicsRepositoryImpl: ComicsRepositoryImpl,
+    private val getComicsUseCase: GetComicsUseCase,
     application: Application
 ) : AndroidViewModel(application) {
 
-    val comic: MutableLiveData<Response<ComicResponse>> = MutableLiveData()
+    val comic: MutableLiveData<List<Comic>> = MutableLiveData()
 
-    suspend fun getComics(limit: Int) {
+    suspend fun getComics() {
         viewModelScope.launch {
-            comic.value = comicsRepositoryImpl.getComics(limit)
+            comic.value = getComicsUseCase.getComics(10)
         }
-
     }
 
 

@@ -1,18 +1,28 @@
 package com.example.marvelcomics.data.repository
 
-import com.example.marvelcomics.data.model.ComicResponse
+import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.data.service.RequestApi
-import com.example.marvelcomics.domain.repository.ComicsRepository
-import dagger.hilt.android.scopes.ActivityRetainedScoped
-import retrofit2.Response
+
 import javax.inject.Inject
 
-@ActivityRetainedScoped
-class ComicsRepositoryImpl @Inject constructor(private val requestApi: RequestApi):
-    ComicsRepository {
+class ComicsRepositoryImpl @Inject constructor(
+    private val requestApi: RequestApi,
+    ) {
 
-    override suspend fun getComics(limit: Int): Response<ComicResponse>? {
-        return requestApi.getComics(limit)
+    suspend fun getComics(limit: Int): List<Comic> {
+        lateinit var comicList: List<Comic>
+        try {
+            val response = requestApi.getComics(limit)
+            val body = response?.body()
+            if(body!=null){
+                comicList = body.data.comics
+            }
+        }catch (exception: Exception){
+            comicList = listOf()
+        }
+        return comicList
     }
-
 }
+
+
+

@@ -1,10 +1,10 @@
 package com.example.marvelcomics.domain.repository
 
-import com.example.marvelcomics.data.model.ComicResponse
-import retrofit2.Response
+
+import com.example.marvelcomics.data.model.Comic
 
 interface ComicsRepository {
 
-    suspend fun getComics(limit: Int): Response<ComicResponse>?
+    suspend fun getComics(limit: Int): List<Comic>?
 
 }

@@ -3,7 +3,6 @@ package com.example.marvelcomics.data.repository
 import com.example.marvelcomics.data.db.cart.CartComics
 import com.example.marvelcomics.data.db.cart.CartDao
 import com.example.marvelcomics.data.model.Comic
-import com.example.marvelcomics.domain.repository.CartComicRepository
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 

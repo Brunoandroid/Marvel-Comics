@@ -1,6 +1,7 @@
 package com.example.marvelcomics.presentation.ui.comics
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -56,9 +57,9 @@ class ComicsFragment : Fragment() {
 
         } else {
             lifecycleScope.launch {
-                comicsViewModel.getComics(25)
+                comicsViewModel.getComics()
                 comicsViewModel.comic.observe(viewLifecycleOwner, { comics ->
-                    val comics = comics.body()!!.data.comics
+                    val comics = comics
                     adapterComics.setListComics(comics)
                     bindingComics.progressBar.visibility = View.INVISIBLE
                 })
