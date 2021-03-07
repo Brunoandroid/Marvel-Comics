@@ -2,14 +2,15 @@ package com.example.marvelcomics.data.repository
 
 import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.data.service.RequestApi
+import com.example.marvelcomics.domain.repository.ComicsRepository
 
 import javax.inject.Inject
 
 class ComicsRepositoryImpl @Inject constructor(
-    private val requestApi: RequestApi,
-    ) {
+    var requestApi: RequestApi
+    ): ComicsRepository {
 
-    suspend fun getComics(limit: Int): List<Comic> {
+    override suspend fun getComics(limit: Int): List<Comic> {
         lateinit var comicList: List<Comic>
         try {
             val response = requestApi.getComics(limit)
