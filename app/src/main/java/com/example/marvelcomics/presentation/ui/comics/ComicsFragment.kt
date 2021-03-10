@@ -60,7 +60,7 @@ class ComicsFragment : Fragment() {
                 comicsViewModel.getComics()
                 comicsViewModel.comic.observe(viewLifecycleOwner, { comics ->
                     val comics = comics
-                    adapterComics.setListComics(comics)
+                    adapterComics.submitList(comics)
                     bindingComics.progressBar.visibility = View.INVISIBLE
                 })
             }

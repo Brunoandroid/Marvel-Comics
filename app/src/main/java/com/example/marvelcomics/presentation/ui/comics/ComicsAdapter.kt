@@ -4,13 +4,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcomics.data.model.Comic
 import com.example.marvelcomics.databinding.RowItemComicsBinding
 
-class ComicsAdapter : RecyclerView.Adapter<ComicsAdapter.ComicsViewHolder>() {
-
-    var list: List<Comic> = emptyList()
+class ComicsAdapter :
+    ListAdapter<Comic, ComicsAdapter.ComicsViewHolder>(DiffUtilCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicsViewHolder {
         val binding =
@@ -19,7 +20,7 @@ class ComicsAdapter : RecyclerView.Adapter<ComicsAdapter.ComicsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ComicsViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(getItem(position))
         Log.d("positionAdapter", position.toString())
     }
 
@@ -35,12 +36,12 @@ class ComicsAdapter : RecyclerView.Adapter<ComicsAdapter.ComicsViewHolder>() {
             }
         }
     }
+}
 
-    override fun getItemCount(): Int = list.size
+private object DiffUtilCallback : DiffUtil.ItemCallback<Comic>(){
+    override fun areItemsTheSame(oldItem: Comic, newItem: Comic): Boolean =
+        oldItem.id == newItem.id
 
-    fun setListComics(listComics: List<Comic>) {
-        this.list = listComics
-        notifyDataSetChanged()
-    }
-
+    override fun areContentsTheSame(oldItem: Comic, newItem: Comic): Boolean =
+        oldItem == newItem
 }
