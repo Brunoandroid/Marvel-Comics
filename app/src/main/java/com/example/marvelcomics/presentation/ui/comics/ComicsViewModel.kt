@@ -26,6 +26,13 @@ class ComicsViewModel @ViewModelInject constructor(
         }
     }
 
+    fun verified_input(name: String): Boolean{
+        if (name != ""){
+            return false
+        }
+        return true
+    }
+
 
     // Verifica se tem internet
     fun hasInternetConnection(): Boolean {

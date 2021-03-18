@@ -14,7 +14,7 @@ class GetComicsUseCaseTest {
     private val getComicsUseCase = GetComicsUseCase(repository)
 
     @Test
-    fun getComics_return_list_with_sucess() = runBlocking{
+    fun `getComics return list with sucess`() = runBlocking {
         //GIVEN
         coEvery { repository.getComics(2) } returns ComicsFactory.comics
 
